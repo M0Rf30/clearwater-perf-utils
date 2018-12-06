@@ -189,7 +189,7 @@ invite_csv.flush()
 
 null = open("/dev/null", "w+")
 
-ipv6_addr = "172.19.63.236"
+ipv6_addr = check_output("ifconfig eth0 | grep inet6 | grep Global | grep -Eo \"[a-f0-9]{4}:[a-f0-9:]+\" | head -n 1", shell=True).strip()
 
 common_args = ["-default_behaviors", "all,-bye",
                # Reconnect up to 2,000 times if we get disconnected (e.g. due
